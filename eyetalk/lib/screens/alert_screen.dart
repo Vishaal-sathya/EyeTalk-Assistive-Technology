@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:eyetalk/constants.dart';
 import 'package:eyetalk/firebase/firebase_service.dart';
+import 'package:eyetalk/screens/home_screen.dart';
 import 'package:eyetalk/screens/settings_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -255,7 +256,8 @@ class _RecpipientScreenState extends State<RecpipientScreen> {
       backgroundColor: AppColors.appbarColor2,
       leading: IconButton(
         onPressed: () {
-          Navigator.pop(context);
+          Navigator.push(context,
+              MaterialPageRoute(builder: ((context) => const HomeScreen())));
         },
         icon: Icon(
           Icons.arrow_back_ios,
@@ -264,15 +266,15 @@ class _RecpipientScreenState extends State<RecpipientScreen> {
       ),
       title: Center(child: changingText()),
       actions: [
-        ElevatedButton(
-            onPressed: () => tapHandler(""),
-            child: Text(
-              "Placeholder",
-              style: GoogleFonts.montserrat(
-                  fontSize: 25,
-                  color: AppColors.textColor,
-                  fontWeight: FontWeight.bold),
-            )),
+        // ElevatedButton(
+        //     onPressed: () => tapHandler(""),
+        //     child: Text(
+        //       "Placeholder",
+        //       style: GoogleFonts.montserrat(
+        //           fontSize: 25,
+        //           color: AppColors.textColor,
+        //           fontWeight: FontWeight.bold),
+        //     )),
         IconButton(
             onPressed: () {
               Navigator.push(
@@ -430,6 +432,24 @@ class _RecpipientScreenState extends State<RecpipientScreen> {
         lefthover = lefthover;
         righthover = righthover;
         downhover = downhover;
+        if (lefthover) {
+          Future.delayed(const Duration(seconds: 2));
+
+          lefthover = righthover = downhover = false;
+          FlutterPhoneDirectCaller.callNumber(caretakerNo);
+        }
+        if (righthover) {
+          Future.delayed(const Duration(seconds: 2));
+
+          lefthover = righthover = downhover = false;
+          FlutterPhoneDirectCaller.callNumber(doctorNo);
+        }
+        if (downhover) {
+          Future.delayed(const Duration(seconds: 2));
+
+          lefthover = righthover = downhover = false;
+          Navigator.pop(context);
+        }
       });
     });
   }

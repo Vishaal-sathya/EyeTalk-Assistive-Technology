@@ -27,7 +27,7 @@ last_update_time = time.time()
 
 while True:
     # We get a new frame from the webcam
-    _, frame = webcam.read()
+    _, frame = webcam.read()                                
 
     # We send this frame to GazeTracking to analyze it
     gaze.refresh(frame)
@@ -38,24 +38,25 @@ while True:
     if gaze.is_blinking():
         eyeLocation = "Looking down"
     elif gaze.is_right():
-        eyeLocation = "Looking left"
-    elif gaze.is_left():
         eyeLocation = "Looking right"
+    elif gaze.is_left():
+        eyeLocation = "Looking left"
     elif gaze.is_center():
         eyeLocation = "Looking center"
 
 
 
 #time limit of the database push
-    if time.time() - last_update_time >= 1:
+    if time.time() - last_update_time >= 4:
         # Update the last update time
         last_update_time = time.time()
 
         # Push the changingString to the database
         ref = db.reference('strings')
         ref.push(eyeLocation)
+        ref.push("")
 
-    cv2.putText(frame, eyeLocation, (90, 60), cv2.FONT_HERSHEY_DUPLEX, 1.6, (147, 58, 31), 2)
+    cv2.putText(frame, eyeLocation, (90, 60), cv2.FONT_HERSHEY_DUPLEX, 1.6, (0, 150, 0), 2)
 
     left_pupil = gaze.pupil_left_coords()
     right_pupil = gaze.pupil_right_coords()

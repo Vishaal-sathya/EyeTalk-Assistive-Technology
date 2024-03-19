@@ -4,6 +4,7 @@ import 'dart:async';
 
 import 'package:eyetalk/constants.dart';
 import 'package:eyetalk/firebase/firebase_service.dart';
+import 'package:eyetalk/screens/home_screen.dart';
 import 'package:eyetalk/screens/settings_screen.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -93,7 +94,7 @@ class _ConversationScreenState extends State<ConversationScreen> {
   }
 
   void initModel() async {
-    model = GenerativeModel(model: "gemini-pro", apiKey: "Enter API key here");
+    model = GenerativeModel(model: "gemini-pro", apiKey: "API key here");
     setState(() {});
   }
 
@@ -179,7 +180,8 @@ class _ConversationScreenState extends State<ConversationScreen> {
       backgroundColor: AppColors.appbarColor2,
       leading: IconButton(
         onPressed: () {
-          Navigator.pop(context);
+          Navigator.push(context,
+              MaterialPageRoute(builder: ((context) => const HomeScreen())));
         },
         icon: Icon(
           Icons.arrow_back_ios,
@@ -192,17 +194,17 @@ class _ConversationScreenState extends State<ConversationScreen> {
             child: changingText()),
       ),
       actions: [
-        ElevatedButton(
-            onPressed: () {
-              tapHandler();
-            },
-            child: Text(
-              "Placeholder",
-              style: GoogleFonts.montserrat(
-                  fontSize: 25,
-                  color: AppColors.textColor,
-                  fontWeight: FontWeight.bold),
-            )),
+        // ElevatedButton(
+        //     onPressed: () {
+        //       tapHandler();
+        //     },
+        //     child: Text(
+        //       "Placeholder",
+        //       style: GoogleFonts.montserrat(
+        //           fontSize: 25,
+        //           color: AppColors.textColor,
+        //           fontWeight: FontWeight.bold),
+        //     )),
         IconButton(
             onPressed: () {
               Navigator.push(
@@ -360,7 +362,7 @@ class _ConversationScreenState extends State<ConversationScreen> {
   }
 
   void suggestionsTap(int startIndex, bool isLeft) {
-    setState(() {
+    {
       if (displayCount == 4) {
         displayCount = 2;
       } else if (displayCount == 2) {
@@ -388,7 +390,7 @@ class _ConversationScreenState extends State<ConversationScreen> {
         startIndexRight = 4;
         displayCount = 4;
       }
-    });
+    }
     choose(isLeft);
   }
 
@@ -470,8 +472,6 @@ class _ConversationScreenState extends State<ConversationScreen> {
         response.text?.split('*').where((line) => line.isNotEmpty).toList();
 
     suggestionList.addAll(phrases?.sublist(0, 20) ?? []);
-
-    setState(() {});
   }
 
   StreamBuilder<String> changingText() {
@@ -520,6 +520,24 @@ class _ConversationScreenState extends State<ConversationScreen> {
         lefthover = lefthover;
         righthover = righthover;
         downhover = downhover;
+        if (lefthover) {
+          Future.delayed(const Duration(seconds: 2));
+
+          lefthover = righthover = downhover = false;
+          suggestionsTap(startIndexLeft, true);
+        }
+        if (righthover) {
+          Future.delayed(const Duration(seconds: 2));
+
+          lefthover = righthover = downhover = false;
+          suggestionsTap(startIndexRight, false);
+        }
+        if (downhover) {
+          Future.delayed(const Duration(seconds: 2));
+
+          lefthover = righthover = downhover = false;
+          micTapHandler();
+        }
       });
     });
   }

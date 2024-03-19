@@ -36,6 +36,12 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: homeScreenAppbar(),
@@ -278,15 +284,15 @@ class _HomeScreenState extends State<HomeScreen> {
         child: changingText(),
       ),
       actions: [
-        ElevatedButton(
-            onPressed: () => tapHandler(""),
-            child: Text(
-              "Placeholder",
-              style: GoogleFonts.montserrat(
-                  fontSize: 25,
-                  color: AppColors.textColor,
-                  fontWeight: FontWeight.bold),
-            )),
+        // ElevatedButton(
+        //     onPressed: () => tapHandler(""),
+        //     child: Text(
+        //       "Placeholder",
+        //       style: GoogleFonts.montserrat(
+        //           fontSize: 25,
+        //           color: AppColors.textColor,
+        //           fontWeight: FontWeight.bold),
+        //     )),
         IconButton(
           onPressed: () {
             Navigator.push(
@@ -345,11 +351,30 @@ class _HomeScreenState extends State<HomeScreen> {
   void setUI() {
     Timer.periodic(Duration(milliseconds: timerValue), (timer) {
       print("running");
-      setState(() {
-        lefthover = lefthover;
-        righthover = righthover;
-        downhover = downhover;
-      });
+      if (mounted) {
+        setState(() {
+          lefthover = lefthover;
+          righthover = righthover;
+          downhover = downhover;
+          if (lefthover) {
+            Future.delayed(const Duration(seconds: 2));
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const RecpipientScreen()));
+            lefthover = righthover = downhover = false;
+          }
+          if (righthover) {
+            Future.delayed(const Duration(seconds: 2));
+
+            Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const ConversationScreen()));
+            lefthover = righthover = downhover = false;
+          }
+        });
+      }
     });
   }
 

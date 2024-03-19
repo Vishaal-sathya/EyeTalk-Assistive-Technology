@@ -15,6 +15,6 @@ class AppColors {
   static Color buttonColor = const Color(0xff78daec);
 }
 
-String doctorNo = "";
+String doctorNo = "+916380520414";
 String caretakerNo = "";
 String patientName = "xyz";
