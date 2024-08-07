@@ -1,17 +1,17 @@
 import 'dart:async';
 
-import 'package:eyetalk/misc/constants.dart';
-import 'package:eyetalk/firebase/firebase_service.dart';
-
-import 'package:eyetalk/screens/conversation_screen.dart';
-
-import 'package:eyetalk/screens/alert_screen.dart';
-import 'package:eyetalk/screens/settings_screen.dart';
 import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
+import 'package:smarthome/components/constants.dart';
+import 'package:smarthome/firebase/firebase_services.dart';
+import 'package:smarthome/screens/alert_screen.dart';
+import 'package:smarthome/screens/conversation_screen.dart';
+import 'package:smarthome/screens/home_screen_2.dart';
+import 'package:smarthome/screens/settings_screen.dart';
+import 'package:smarthome/screens/smart_home_screen.dart';
 
 void main() async {}
 
@@ -36,6 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
+
     setUI();
   }
 
@@ -58,7 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       leftButtonBuilder(
                           lefthover,
                           "Alert a",
-                          "person",
+                          "Person",
                           CupertinoIcons.exclamationmark_triangle_fill,
                           MediaQuery.of(context).size.height / 1.8,
                           MediaQuery.of(context).size.width / 2.12),
@@ -73,7 +74,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   smallButtonBuilder(
                       downhover,
-                      "More Options ",
+                      "More Options",
                       Icons.more_horiz,
                       MediaQuery.of(context).size.height / 4.2,
                       MediaQuery.of(context).size.width)
@@ -102,7 +103,7 @@ class _HomeScreenState extends State<HomeScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Icon(
-                  CupertinoIcons.chevron_left,
+                  CupertinoIcons.chevron_left_circle_fill,
                   size: 70,
                   color: getColor(!(hover)),
                 ),
@@ -207,7 +208,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ],
                 ),
                 Icon(
-                  CupertinoIcons.right_chevron,
+                  CupertinoIcons.chevron_right_circle_fill,
                   size: 70,
                   color: getColor(!(hover)),
                 ),
@@ -245,7 +246,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       fontWeight: FontWeight.w500),
                 ),
                 Icon(
-                  CupertinoIcons.chevron_down,
+                  CupertinoIcons.arrow_down_circle_fill,
                   size: 60,
                   color: getColor(!(hover)),
                 ),
@@ -257,26 +258,19 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
+// tap handler handles clicks in different ways, if text is provided it is a regualr click, if not it works by iris tracking
   void tapHandler(String text) {
-    if (text == "") {
-      if (righthover) {
-        Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-                builder: (context) => const ConversationScreen()));
-      }
-      if (lefthover) {
-        Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => const RecpipientScreen()));
-      }
-    }
     if (text == "conversation") {
       Navigator.pushReplacement(context,
           MaterialPageRoute(builder: (context) => const ConversationScreen()));
     }
-    if (text == "person") {
+    if (text == "Person") {
       Navigator.pushReplacement(context,
           MaterialPageRoute(builder: (context) => const RecpipientScreen()));
+    }
+    if (text == "More Options") {
+      Navigator.pushReplacement(context,
+          MaterialPageRoute(builder: (context) => const HomeScreen2()));
     }
   }
 
@@ -287,15 +281,6 @@ class _HomeScreenState extends State<HomeScreen> {
         child: changingText(),
       ),
       actions: [
-        // ElevatedButton(
-        //     onPressed: () => tapHandler(""),
-        //     child: Text(
-        //       "Placeholder",
-        //       style: GoogleFonts.montserrat(
-        //           fontSize: 25,
-        //           color: AppColors.textColor,
-        //           fontWeight: FontWeight.bold),
-        //     )),
         IconButton(
           onPressed: () {
             Navigator.pushReplacement(
@@ -303,9 +288,9 @@ class _HomeScreenState extends State<HomeScreen> {
               MaterialPageRoute(builder: (context) => const SettingsScreen()),
             );
           },
-          icon: const Icon(
+          icon: Icon(
             Icons.settings_outlined,
-            color: Color.fromARGB(255, 242, 240, 240),
+            color: AppColors.iconColor,
           ),
         ),
       ],
@@ -392,6 +377,22 @@ class _HomeScreenState extends State<HomeScreen> {
                   context,
                   MaterialPageRoute(
                       builder: (context) => const ConversationScreen()));
+              lefthover = righthover = downhover = false;
+              Navigation.counter = 0; // Reset counter
+            }
+          }
+          if (downhover) {
+            PrevRighthover = false;
+            PrevLefthover = false;
+            if (PrevDownhover) {
+              Navigation.counter++;
+            } else {
+              PrevDownhover = true;
+              Navigation.counter = 0;
+            }
+            if (Navigation.counter >= Navigation.delayDuration) {
+              Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) => const HomeScreen2()));
               lefthover = righthover = downhover = false;
               Navigation.counter = 0; // Reset counter
             }

@@ -3,17 +3,17 @@
 <plist version="1.0">
 <dict>
 	<key>API_KEY</key>
-	<string>AIzaSyCNL58FnqYtTvyEi5bJHl0pK9pn8Nf2-cA</string>
+	<string>AIzaSyDjly401hoSsOnd1wtU5EpOHVYPpWiuSwU</string>
 	<key>GCM_SENDER_ID</key>
-	<string>182115928051</string>
+	<string>344960967948</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.example.eyetalk</string>
+	<string>com.example.smarthome</string>
 	<key>PROJECT_ID</key>
-	<string>iris-b4d9f</string>
+	<string>smarthome-310c5</string>
 	<key>STORAGE_BUCKET</key>
-	<string>iris-b4d9f.appspot.com</string>
+	<string>smarthome-310c5.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -25,8 +25,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:182115928051:ios:e1f7b32c214ee208f13486</string>
+	<string>1:344960967948:ios:51eebae694b847ff119529</string>
 	<key>DATABASE_URL</key>
-	<string>https://iris-b4d9f-default-rtdb.asia-southeast1.firebasedatabase.app</string>
+	<string>https://smarthome-310c5-default-rtdb.asia-southeast1.firebasedatabase.app</string>
 </dict>
 </plist>

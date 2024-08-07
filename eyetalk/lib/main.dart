@@ -1,6 +1,6 @@
-import 'package:eyetalk/misc/constants.dart';
-import 'package:eyetalk/firebase/firebase_options.dart';
-import 'package:eyetalk/screens/home_screen.dart';
+import 'package:smarthome/components/constants.dart';
+import 'package:smarthome/firebase/firebase_options.dart';
+import 'package:smarthome/screens/home_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 

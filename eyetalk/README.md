@@ -1,4 +1,4 @@
-# eyetalk
+# smarthome
 
 A new Flutter project.
 

@@ -1,18 +1,13 @@
-// ignore_for_file: sized_box_for_whitespace
-
 import 'dart:async';
 
-import 'package:eyetalk/misc/constants.dart';
-import 'package:eyetalk/firebase/firebase_service.dart';
-import 'package:eyetalk/screens/home_screen.dart';
-import 'package:eyetalk/screens/settings_screen.dart';
-import 'package:flutter/cupertino.dart';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_generative_ai/google_generative_ai.dart';
+import 'package:smarthome/components/constants.dart';
+import 'package:smarthome/firebase/firebase_services.dart';
+import 'package:smarthome/screens/home_screen.dart';
+import 'package:smarthome/screens/settings_screen.dart';
 import 'package:speech_to_text/speech_to_text.dart';
 
 class ConversationScreen extends StatefulWidget {

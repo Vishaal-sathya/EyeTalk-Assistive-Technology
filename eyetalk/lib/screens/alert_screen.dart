@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import 'package:eyetalk/misc/constants.dart';
-import 'package:eyetalk/firebase/firebase_service.dart';
-import 'package:eyetalk/screens/home_screen.dart';
-import 'package:eyetalk/screens/settings_screen.dart';
+import 'package:smarthome/components/constants.dart';
+import 'package:smarthome/firebase/firebase_services.dart';
+import 'package:smarthome/screens/home_screen.dart';
+import 'package:smarthome/screens/settings_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
@@ -296,20 +296,6 @@ class _RecpipientScreenState extends State<RecpipientScreen> {
   }
 
   void tapHandler(String text) {
-    if (text == "") {
-      if (lefthover) {
-        callDoctorDialoug(
-            "Are you sure you want to call the careTaker ?", doctorNo);
-      }
-      if (righthover) {
-        callDoctorDialoug(
-            "Are you sure you want to call the doctor ?", caretakerNo);
-      }
-      if (downhover) {
-        Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => const HomeScreen()));
-      }
-    }
     if (text == "caretaker") {
       // callDoctorDialoug(
       //     "Are you sure you want to call the careTaker ?", doctorNo);

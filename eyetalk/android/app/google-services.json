@@ -1,22 +1,41 @@
 {
   "project_info": {
-    "project_number": "182115928051",
-    "firebase_url": "https://iris-b4d9f-default-rtdb.asia-southeast1.firebasedatabase.app",
-    "project_id": "iris-b4d9f",
-    "storage_bucket": "iris-b4d9f.appspot.com"
+    "project_number": "344960967948",
+    "firebase_url": "https://smarthome-310c5-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "smarthome-310c5",
+    "storage_bucket": "smarthome-310c5.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:182115928051:android:b5b9c7149a47bd8af13486",
+        "mobilesdk_app_id": "1:344960967948:android:80626b7425bebfe9119529",
         "android_client_info": {
-          "package_name": "com.example.eyetalk"
+          "package_name": "com.example.smarthome"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCgSpo4jk0F5a0dJ5IBYzObL9sLY71E0d8"
+          "current_key": "AIzaSyAu7x7hCCxIHVm4JJq2kiMsCJndyI-dtl0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:344960967948:android:15e9b13bc2bb92ee119529",
+        "android_client_info": {
+          "package_name": "com.mycompany.h2tsui"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAu7x7hCCxIHVm4JJq2kiMsCJndyI-dtl0"
         }
       ],
       "services": {
