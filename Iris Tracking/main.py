@@ -21,7 +21,7 @@ import time
 # print(get_available_cameras())
 
 gaze = GazeTracking()
-webcam = cv2.VideoCapture(1)
+webcam = cv2.VideoCapture(0)
 
 cred = credentials.Certificate("firebase.json")  
 firebase_admin.initialize_app(cred, {
