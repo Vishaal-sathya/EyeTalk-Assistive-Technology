@@ -1,1 +1,1 @@
-# EyeTalk-Assistive-Technology
+# EyeTalk - An Iris enabled ALS Assistant
