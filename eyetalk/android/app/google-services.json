@@ -3,7 +3,7 @@
     "project_number": "344960967948",
     "firebase_url": "https://smarthome-310c5-default-rtdb.asia-southeast1.firebasedatabase.app",
     "project_id": "smarthome-310c5",
-    "storage_bucket": "smarthome-310c5.appspot.com"
+    "storage_bucket": "smarthome-310c5.firebasestorage.app"
   },
   "client": [
     {
